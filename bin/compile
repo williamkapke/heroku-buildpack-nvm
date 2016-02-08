@@ -1,0 +1,25 @@
+#!/bin/bash
+
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Found a .versions file"
+
+if [ ! -s $1/.versions ]; then
+  echo ".versions empty. Skipping." | indent
+  exit 0
+fi
+
+cd $1
+
+if [ -s ".versions" ]; then
+  npm install -g nvm
+  while read version; do
+    if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
+      echo Installing $version
+      nvm install $version
+    fi
+  done < .versions
+fi
