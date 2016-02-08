@@ -15,7 +15,8 @@ fi
 cd $1
 
 if [ -s ".versions" ]; then
-  npm install -g nvm
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+
   while read version; do
     if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
       echo Installing $version
