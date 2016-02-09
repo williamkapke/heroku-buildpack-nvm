@@ -22,5 +22,5 @@ if [ -s ".versions" ]; then
   curl -L http://git.io/n-install | bash -s -- -y 5.5.0 $(cat .versions)
 fi
 
-mkdir -p $build_dir/.profile.d
-cp $bp_dir/profile/* $build_dir/.profile.d/
+mkdir -p $BUILD_DIR/.profile.d
+cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
