@@ -15,7 +15,7 @@ fi
 cd $1
 
 if [ -s ".versions" ]; then
-  curl -L http://git.io/n-install | bash
+  curl -L http://git.io/n-install | N_PREFIX=$HOME/.n bash -s -- -y
 
   while read version; do
     if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
