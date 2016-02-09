@@ -20,7 +20,7 @@ if [ -s ".versions" ]; then
   while read version; do
     if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
       echo Installing $version
-      $1/.n/bin/n $version
+      $HOME/.n/bin/n $version
     fi
   done < .versions
 fi
