@@ -15,12 +15,12 @@ fi
 cd $1
 
 if [ -s ".versions" ]; then
-  curl -L http://git.io/n-install | N_PREFIX=$HOME/.n bash -s -- -y 5.5.0
+  curl -L http://git.io/n-install | N_PREFIX=$1/.n bash -s -- -y 5.5.0
 
   while read version; do
     if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
       echo Installing $version
-      $HOME/.n/bin/n $version
+      $1/.n/bin/n $version
     fi
   done < .versions
 fi
