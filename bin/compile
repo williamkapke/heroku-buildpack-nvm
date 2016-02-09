@@ -15,9 +15,7 @@ fi
 cd $1
 
 if [ -s ".versions" ]; then
-  export N_PREFIX=$build_dir
-  export PREFIX=$build_dir
-  npm install -g n
+  curl -L http://git.io/n-install | bash
 
   while read version; do
     if [ -n "$version" ]; then # incase ensure_newline_at_eof_on_save is enabled
