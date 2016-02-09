@@ -25,4 +25,7 @@ fi
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
 
-$BUILD_DIR/.n/lib/node_modules/npm/bin/npm-cli.js install
+export PATH="$BUILD_DIR/.n/bin:$PATH:$BUILD_DIR/bin:$HOME/node_modules/.bin"
+export NODE_HOME="$build_dir/.n/bin/node"
+
+npm install
