@@ -24,3 +24,5 @@ fi
 
 mkdir -p $BUILD_DIR/.profile.d
 cp $BP_DIR/profile/* $BUILD_DIR/.profile.d/
+
+npm install
