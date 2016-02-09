@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BUILD_DIR=${1:-}
+BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 indent() {
   sed -u 's/^/       /'
@@ -7,15 +9,18 @@ indent() {
 
 echo "-----> Found a .versions file"
 
-if [ ! -s $1/.versions ]; then
+if [ ! -s $BUILD_DIR/.versions ]; then
   echo ".versions empty. Skipping." | indent
   exit 0
 fi
 
-cd $1
+cd $BUILD_DIR
 
-export N_PREFIX=$1/.n bash
+export N_PREFIX=$BUILD_DIR/.n bash
 
 if [ -s ".versions" ]; then
   curl -L http://git.io/n-install | bash -s -- -y 5.5.0 $(cat .versions)
 fi
+
+mkdir -p $build_dir/.profile.d
+cp $bp_dir/profile/* $build_dir/.profile.d/
